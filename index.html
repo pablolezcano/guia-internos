@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIA - Rizobacter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style-rizobacter.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+</head>
+
+    <nav class="navbar navbar-white bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/assets/brand/logo-argentina.png" alt="" width="180" height="auto">
+            </a>
+        </div>
+    </nav>
+     <div class="bg-black text-center text-lg-start">
+        <div class="text-center p-3 text-white" style="background-color: #0D4371;">
+      Guía de internos 
+        </div>
+        <br>
+     </div>
+
+</div>
+<body>
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-12 p-5">
+                <div id="table-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+   
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    
+    <!-- Datatable csv-->
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.csv.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="js/csv_to_html_table.js"></script>
+
+    <script>
+        function format_link(link) {
+            if (link)
+                return "<a href='" + link + "' target='_blank'>" + link + "</a>";
+            else return "";
+        }
+
+        CsvToHtmlTable.init({
+            // csv_path: ubicación donde se encuentra el archivo csv.
+            csv_path: "data/internos.csv",
+            element: "table-container",
+            allow_download: false,
+            csv_options: {
+                separator: ",",
+                delimiter: '"'
+            },
+            // Opciones para agregarle a la tabla.
+            datatables_options: {
+                paging: true,
+                responsive: true,
+                columnsDefs: [
+                { responsivePriority: 1, targets: 0 },
+                { responsivePriority: 2, targets: -1},
+                ],
+            //   columnDefs: [
+            //   {  targets: -1,
+            //     render: function (data, type, row, meta) {
+            //        return '<input type="button" class="Interno" id="' + meta.row + '" value="Interno"/>';
+            //     }
+            //  }
+            //  ]
+            
+            },
+            // Formateo de caracteres.
+            custom_formatting: [
+                [4, format_link]
+            ]
+        });
+
+        $('#table-container tbody').on('click', '.interno', function () {
+            var id = $(this).attr("id").match(/\d+/)[0];
+            var data = $('#table-container').DataTable().row( id ).data();
+            console.log(data[0]);
+          });
+          
+    </script>
+
+    
+<footer class="text-center text-white" style="background-color: #1FA6DE;">
+    <div class="container p-4">
+      <section class="text-center">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg">
+            <img src="/assets/img/mapa.svg" alt="mundo" height="135" width="auto" >
+          </div>
+        </div>
+      </section>
+   
+    </div>
+    
+  
+    
+    <div class="text-center p-3" style="background-color: #0d4372">
+ 
+    </div>
+    
+  </footer>
+   
+</body>
+</html>
+
+

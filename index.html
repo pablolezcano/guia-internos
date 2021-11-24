@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUIA - Rizobacter</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="style-rizobacter.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <title>GUIA DE INTERNOS- Rizobacter</title>
+    <link rel="stylesheet" href="css\bootstrap.min.css">
+    <link rel="stylesheet" type="text\css" href="DataTables/datatables.min.css"/>
+    <link rel="stylesheet" href="DataTables-1.11.3/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="DataTables/Responsive-2.2.9/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="DataTables/DataTables-1.11.3/css/jquery.dataTables.min.css">
+    <style>
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding : 0px;
+        margin-left: 0px;
+        display: inline;
+        border: 0px;
+    }
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        border: 0px;
+    }
+    </style>
 </head>
     <nav class="navbar navbar-white bg-white">
         <div class="container">
@@ -28,6 +39,9 @@
 </div>
 <body>
     <div class="container" >
+        <div class="alert alert-primary" role="alert">
+            Si encuentra algún dato incorrecto, notificar a <a href="mailto:soportesistemas@rizobacter.com.ar" class="alert-link">soportesistemas@rizobacter.com.ar</a>.
+        </div>
         <div class="row">
             <div class="col-lg-12 p-5">
                 <div id="table-container"></div>
@@ -42,13 +56,12 @@
     
     <!-- Datatable csv-->
     
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery.csv.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="DataTables/js/jquery-3.3.1.min.js"></script>
+    <script src="DataTables/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables/DataTables-1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script src="DataTables/Responsive-2.2.9/js/dataTables.responsive.min.js"></script>
     <script src="js/csv_to_html_table.js"></script>
+    <script src="js/jquery.csv.min.js"></script>
 
     <script>
         function format_link(link) {
@@ -68,19 +81,19 @@
             },
             // Opciones para agregarle a la tabla.
             datatables_options: {
+                info: false,
                 paging: true,
                 responsive: true,
+                pagingType: "simple_numbers",
+                language: {"paginate": {
+                    "previous": '<a > < </a>',
+                    "next": '<a> > </a>'
+                    },
+                },
                 columnsDefs: [
                 { responsivePriority: 1, targets: 0 },
                 { responsivePriority: 2, targets: -1},
                 ],
-            //   columnDefs: [
-            //   {  targets: -1,
-            //     render: function (data, type, row, meta) {
-            //        return '<input type="button" class="Interno" id="' + meta.row + '" value="Interno"/>';
-            //     }
-            //  }
-            //  ]
             
             },
             // Formateo de caracteres.
@@ -110,8 +123,7 @@
     </div>
     <div class="text-center p-3" style="background-color: #0d4372">
     </div>
-</footer>
-   
+</footer> 
 </body>
 </html>
 

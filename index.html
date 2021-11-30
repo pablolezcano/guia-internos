@@ -27,12 +27,13 @@
             <a class="navbar-brand" href="#">
                 <img src="/assets/brand/logo-argentina.png" alt="" width="180" height="auto">
             </a>
+            <div class="text-center p-3" style="color: #0D4371;">
+                Guía de internos y celulares de colaboradores del grupo BIOX
+            </div>
         </div>
     </nav>
      <div class="bg-black text-center text-lg-start">
-        <div class="text-center p-3 text-white" style="background-color: #0D4371;">
-      Guía de internos 
-        </div>
+
         <br>
      </div>
 
@@ -43,7 +44,7 @@
             Si encuentra algún dato incorrecto, notificar a <a href="mailto:soportesistemas@rizobacter.com.ar" class="alert-link">soportesistemas@rizobacter.com.ar</a>.
         </div>
         <div class="row">
-            <div class="col-lg-12 p-5">
+            <div class="col">
                 <div id="table-container"></div>
             </div>
         </div>
@@ -83,15 +84,13 @@
                 paging: true,
                 responsive: true,
                 pagingType: "simple_numbers",
-                /*
-                language: {"paginate": {
-                    "previous": '<a > < </a>',
-                    "next": '<a> > </a>'
-                    },
-                },
-                */
                 language: {
-                    url: cdn.datatables.net/plug-ins/1.11.3/i18n/es-mx.json
+                    "search":         "Buscar:",
+                    "lengthMenu":     "Mostrar _MENU_ ",
+                    "paginate": {
+                        "previous": '<a > < </a>',
+                        "next": '<a> > </a>'
+                    },
                 },
                 columnsDefs: [
                 { responsivePriority: 1, targets: 0 },
